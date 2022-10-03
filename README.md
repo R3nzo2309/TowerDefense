@@ -1,7 +1,8 @@
 # TowerDefense skils
 graph TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[fa:fa-car Car]
+    A[selling Towers] -->|find the wanted tower| B(make it posible to select the tower)
+    B --> C([when the tower is selected])
+    B --> F([make the tower not follow enenmies anymore])
+    C -->|One| D[give money to player]
+    C -->|Two| E[delete tower prefab]
+    F --> G[make all code pauze except moving the tower]
