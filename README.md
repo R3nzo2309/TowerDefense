@@ -1,4 +1,6 @@
 # TowerDefense skils
+
+```mermaid
 graph TD
     A[selling Towers] -->|find the wanted tower| B(make it posible to select the tower)
     B --> C([when the tower is selected])
@@ -6,3 +8,5 @@ graph TD
     C -->|One| D[give money to player]
     C -->|Two| E[delete tower prefab]
     F --> G[make all code pauze except moving the tower]
+    
+    ```
