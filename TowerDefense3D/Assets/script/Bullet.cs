@@ -7,11 +7,21 @@ public class Bullet : MonoBehaviour
     private Transform target;
     private float speed = 50f;
 
+    public int damage = 50;
+
     [SerializeField] private GameObject impactEffect;
 
-    public void seek(Transform _target)
+    
+
+    public void Seek(Transform _target)
     {
         target = _target;
+    }
+
+    private void Start()
+    {
+        
+
     }
 
     // Update is called once per frame
@@ -37,13 +47,18 @@ public class Bullet : MonoBehaviour
     }
 
     void HitTarget()
-    {
+    {     
+        MoveToWaypoint enemy = target.GetComponent<MoveToWaypoint>();
+
+        if (enemy != null)
+        {            
+            enemy.TakeDamage(damage);
+            //Debug.Log(damage);
+        }
+
+
         GameObject effectsIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectsIns, 2f);
-
         Destroy(gameObject);
-        Destroy(target.gameObject);
-
-        MoneySystem.money += 10;
     }
 }

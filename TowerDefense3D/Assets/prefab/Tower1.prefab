@@ -222,12 +222,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5308105613865083196}
   - component: {fileID: 5308105613865083197}
-  - component: {fileID: 1846579492997301419}
   - component: {fileID: 4814715777777686255}
   - component: {fileID: 802870427855045923}
   m_Layer: 6
   m_Name: Tower1
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,18 +268,8 @@ MonoBehaviour:
   rangeObject: {fileID: 2519504531568901199}
   bulletPrefab: {fileID: 4703576103361793984, guid: 20616e8f25c30874f8ef16604307b4db, type: 3}
   firepoint: {fileID: 2389397810563231915}
---- !u!114 &1846579492997301419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5308105613865083171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f6e0bc7ff0c1c46a5ff4429359fae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  shopSreenOpen: 0
+  menu: {fileID: 0}
 --- !u!136 &4814715777777686255
 CapsuleCollider:
   m_ObjectHideFlags: 0

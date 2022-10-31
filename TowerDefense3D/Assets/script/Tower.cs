@@ -17,14 +17,24 @@ public class Tower : MonoBehaviour
     [SerializeField] private GameObject rangeObject;
 
     private GameObject lastHitObject;
-    private bool freeSpace = true;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] public Transform firepoint;
+
+    private GameObject nodes;
+
+    private MoneySystem moneySystem;
+
+    public bool shopSreenOpen = false;
+
+    public Menu menu;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        moneySystem = GameObject.Find("EventSystem").GetComponent<MoneySystem>();
+        //nodes = GameObject.FindGameObjectWithTag("Node");
+        menu = FindObjectOfType<Menu>();
     }
 
     void UpdateTarget()
@@ -61,7 +71,10 @@ public class Tower : MonoBehaviour
         int layerMask = 1 << 3;
         if (Physics.Raycast(ray, out hit, 100, layerMask))
         {
-            lastHitObject = hit.collider.gameObject;  
+            if (hit.collider.gameObject.GetComponent<Buildable>().freeSpace == true)
+            {                
+                lastHitObject = hit.collider.gameObject;
+            }
         }
     }
 
@@ -71,7 +84,7 @@ public class Tower : MonoBehaviour
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
         {
-            bullet.seek(target);
+            bullet.Seek(target);
         }
     }
 
@@ -105,36 +118,48 @@ public class Tower : MonoBehaviour
     public void SellTower()
     {
         Destroy(gameObject);
-        MoneySystem.money += 10;
+        moneySystem.money += 2;
         BuyTower.towerCount -= 1;
     }
 
     //dragging the tower
     void OnMouseDown()
-
     {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        rangeObject.SetActive(true);
+        if(!shopSreenOpen)
+        {
+            mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+            rangeObject.SetActive(true);
+
+            if (transform.parent)
+            {
+                GetComponentInParent<Buildable>().freeSpace = true;
+            }
+            FindObjectOfType<Menu>().currentDraggingTower = this.gameObject;
+        }
     }
 
     private void OnMouseUp()
     {
         rangeObject.SetActive(false);
+        gameObject.transform.parent = lastHitObject.transform;
+        GetComponentInParent<Buildable>().freeSpace = false;
     }
     
     void OnMouseDrag()
-
     {
-        if (lastHitObject)
+        if(!shopSreenOpen)
         {
-            transform.position = lastHitObject.transform.position + new Vector3(0, 1f, 0);
-        }
-        
-        target = null;
+            if (lastHitObject)
+            {
+                transform.position = lastHitObject.transform.position + new Vector3(0, 1f, 0);
+            }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            SellTower();
+            target = null;
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                SellTower();
+            }
         }
     }
 
