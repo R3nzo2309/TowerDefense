@@ -21,8 +21,6 @@ public class Tower : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] public Transform firepoint;
 
-    private GameObject nodes;
-
     private MoneySystem moneySystem;
 
     public bool shopSreenOpen = false;
@@ -33,7 +31,6 @@ public class Tower : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         moneySystem = GameObject.Find("EventSystem").GetComponent<MoneySystem>();
-        //nodes = GameObject.FindGameObjectWithTag("Node");
         menu = FindObjectOfType<Menu>();
     }
 
@@ -103,7 +100,7 @@ public class Tower : MonoBehaviour
             if (fireCountdown <= 0)
             {
                 Shoot();
-                fireCountdown = 1f / fireRate;
+                fireCountdown = 1.5f / fireRate;
             }
         }
 

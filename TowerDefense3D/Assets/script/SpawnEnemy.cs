@@ -42,7 +42,7 @@ public class SpawnEnemy : MonoBehaviour
             if (!EnemyIsAlive())
             {
                 Debug.Log("Wave Complete");
-                moneySystem.money += 30;
+                moneySystem.money += 10;
                 WaveCompleted();
             }
             else

@@ -548,7 +548,7 @@ MonoBehaviour:
   - {fileID: 4551573933943176871, guid: aa29af7d22c11064dbdaffedfedc7ef4, type: 3}
   - {fileID: 5727065234006669323, guid: c261d9bf0975f564c87d8f089f461657, type: 3}
   - {fileID: 1661667266876545564, guid: 0fb5e0e0b6d8ff14aa70c0c0248f5093, type: 3}
-  movementSpeed: 5
+  movementSpeed: 10
   startHealth: 100
   healthbar: {fileID: 4126457704445029702}
 --- !u!1 &4834581028725288429

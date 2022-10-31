@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private Transform target;
     private float speed = 50f;
 
-    public int damage = 50;
+    public int damageAmount = 50;
 
     [SerializeField] private GameObject impactEffect;
 
@@ -48,11 +48,11 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {     
-        MoveToWaypoint enemy = target.GetComponent<MoveToWaypoint>();
+        MoveToWaypoint damage = target.GetComponent<MoveToWaypoint>();
 
-        if (enemy != null)
+        if (damage != null)
         {            
-            enemy.TakeDamage(damage);
+            damage.TakeDamage(damageAmount);
             //Debug.Log(damage);
         }
 

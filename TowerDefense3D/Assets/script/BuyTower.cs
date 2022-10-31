@@ -8,6 +8,7 @@ public class BuyTower : MonoBehaviour
     public static float towerCount = 0;
 
     private MoneySystem moneySystem;
+    public GameObject ShopScreen;
 
     private void Start()
     {
@@ -23,7 +24,8 @@ public class BuyTower : MonoBehaviour
                 Instantiate(TowerPrefab);
                 //TowerPrefab.transform.position = Camera.main.ScreenPointToRay(Input.mousePosition);
                 moneySystem.money -= 20;
-                //Debug.Log(moneySystem.money);
+                ShopScreen.SetActive(false);
+                Time.timeScale = 1;
             }
             else
             {

@@ -25,7 +25,7 @@ public class MoveToWaypoint : MonoBehaviour
     {
         startHealth -= damageAmount;
 
-        healthbar.fillAmount = health / startHealth;
+        healthbar.fillAmount = startHealth/health;
         Debug.Log(healthbar.fillAmount);
 
         if(startHealth <= 0)
